@@ -74,9 +74,11 @@ author-note:
   disclosures:
     study-registration: "This study was not preregistered."
     data-sharing: "All data, models, and scripts required to reproduce
-      the results of this work are publicly available on both Zenodo 
-      ([doi.org/10.5281/zenodo.24019945](https://doi.org/10.5281/zenodo.24019945))
-      and GitHub ([github.com/RicardoReySaez/uSDT_pub](https://github.com/RicardoReySaez/uSDT_pub))."
+      the results of this work are publicly available on GitHub 
+      [[github.com/RicardoReySaez/uSDT_pub](https://github.com/RicardoReySaez/uSDT_pub), 
+      @reysaez2026uSDTpub] and Zenodo 
+      [[doi.org/10.5281/zenodo.24019945](https://doi.org/10.5281/zenodo.24019945),
+      @rey_saez_2026_zenodo]."
     related-report: "Portions of the results reported in this article
       were previously presented at the 2025 28th Annual Meeting of the
       ASSC (Heraklion, Greece), and at the Second Joint Meeting of the
@@ -1781,6 +1783,10 @@ va_b  <- lapply(hyps, \(h) test_row(va$bayes, h))
 va_bf <- lapply(hyps, \(h) bf_row(va$bf, h))
 we_b  <- lapply(hyps, \(h) test_row(we$bayes, h))
 we_bf <- lapply(hyps, \(h) bf_row(we$bf, h))
+
+# Klauer (errors-in-variables) intercept of Greenwald and De Houwer (2017),
+# with its 95% CI, as in the table of this example.
+gw_eiv <- gw$eiv[gw$eiv$parameter == "intercept", ]
 ```
 
 ## Masked Conditioning
@@ -1815,9 +1821,9 @@ intercept as evidence of conditioning at zero visibility. To account for
 measurement error in the visibility measure, they also applied the
 errors-in-variables correction of @Klauer1998Unbiased, after which the
 intercept remained statistically significant. The Klauer regression
-yielded a positive intercept, `r fmt(gw$ols$estimate[1])`, 99% CI
-`r fmt_ci(gw$ols$conf.low[1], gw$ols$conf.high[1])`, and a slope close
-to zero. Together with the finding that no participant showed perfect
+yielded a positive intercept, `r fmt(gw_eiv$estimate)`, 95% CI
+`r fmt_ci(gw_eiv$conf.low, gw_eiv$conf.high)`, and a slope close to zero.
+Together with the finding that no participant showed perfect
 awareness of the CS–US contingency, the authors interpreted these
 results as evidence of unconscious conditioning.
 
@@ -1837,8 +1843,8 @@ presented in @tbl-greenwald.
 [^series1]: Although we focus on Experiment 1c (S18) here, we also
     prepared the trial-level data and fitted the same models to the
     other 17 datasets from Series 1 of @Greenwald2017Unconscious. The
-    code for reproducing these analyses is available in the project's
-    GitHub repository (URL).
+    code for reproducing these analyses is available in the
+    `R scripts/Extra analysis` folder of the project repositories.
 
 ```{r}
 #| label: tbl-greenwald

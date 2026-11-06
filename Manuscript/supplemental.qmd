@@ -42,9 +42,11 @@ author-note:
   disclosures:
     study-registration: null
     data-sharing: "All data, models, and scripts required to reproduce
-      the results of this work are publicly available on both Zenodo 
-      ([doi.org/10.5281/zenodo.24019945](https://doi.org/10.5281/zenodo.24019945))
-      and GitHub ([github.com/RicardoReySaez/uSDT_pub](https://github.com/RicardoReySaez/uSDT_pub))."
+      the results of this work are publicly available on GitHub 
+      [[github.com/RicardoReySaez/uSDT_pub](https://github.com/RicardoReySaez/uSDT_pub), 
+      @reysaez2026uSDTpub] and Zenodo 
+      [[doi.org/10.5281/zenodo.24019945](https://doi.org/10.5281/zenodo.24019945),
+      @rey_saez_2026_zenodo]."
     related-report: null
     conflict-of-interest: null
     financial-support: null
