@@ -40,6 +40,7 @@ uSDT_pub/
 │   └── Wentura 2025/     Wentura, Rohr, & Kiefer (2025), from osf.io/9t4pk
 ├── R scripts/
 │   ├── Empirical illustrations/   Reanalyses of the three empirical studies
+│   ├── Extra analysis/            Reanalysis of all 18 data sets of Greenwald & De Houwer (2017)
 │   ├── Manuscript figures/        Figures 1-4 (illustrative figures)
 │   ├── Power simulation/          Figure 5 (power by number of trials)
 │   ├── Simulation study/          Simulation Studies 1 (validation) and 2 (robustness)
@@ -68,6 +69,7 @@ uSDT_pub/
 | `Empirical illustrations/2. greenwald2017_exp1c_analysis.R` | Figures 8 and 9; results and fit of the masked conditioning study |
 | `Empirical illustrations/3. vadillo2025_exp2_analysis.R` | Figure 10; results and fit of the contextual cuing study |
 | `Empirical illustrations/4. wentura2025_exp2a_analysis.R` | Figure 11; results and fit of the affective priming study |
+| `Extra analysis/greenwald2017_series1_analysis.R` | Tables of the three hypotheses in the 18 data sets of Series 1 (footnote in the masked conditioning example); needs script 1 first |
 | `Manuscript figures/manuscript_figures.R` | Figures 1-4 |
 | `Power simulation/power_trials_direct.R` | Figure 5 |
 | `Simulation study/uSDT_validation_sim.R` | Raw outputs of Simulation Study 1 |

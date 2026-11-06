@@ -56,8 +56,11 @@ eiv_lm <- function(vis, cond, starts = 20) {
                   lower = c(-Inf, 1e-4, 1e-4, 1e-4, -Inf, -Inf))
   })
   best <- fits[[which.min(sapply(fits, `[[`, "fval"))]]
-  se   <- sqrt(diag(solve(numDeriv::hessian(eiv_loglik, best$par,
-                                            vis = vis, cond = cond))))
+  # The Hessian is singular when a variance lies on its lower bound (e.g., a
+  # true visibility SD of zero); the SEs are then not available (NA).
+  se   <- tryCatch(sqrt(diag(solve(numDeriv::hessian(eiv_loglik, best$par,
+                                                     vis = vis, cond = cond)))),
+                   error = function(e) rep(NA_real_, length(best$par)))
   data.frame(parameter = c("mu", "sigma", "sx", "sy", "slope", "intercept"),
              estimate  = best$par,
              se        = se)
