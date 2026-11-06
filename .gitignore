@@ -1,0 +1,31 @@
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto caches and render intermediates
+.quarto/
+*_files/
+**/*.quarto_ipynb
+Manuscript/*.aux
+Manuscript/*.log
+Manuscript/*.out
+Manuscript/*.tex
+
+# Office lock files (exist only while a document is open)
+~$*
+
+# Large outputs, too big for GitHub (>100 MB per file); shared on Zenodo.
+# The empty Fits/ folder is kept because the empirical scripts save into it.
+/Fits/*
+!/Fits/.gitkeep
+/Results/Simulation studies/Raw/
+
+# Temporary files that SimDesign writes while a simulation runs
+tmp_*.qs2
+
+# Third-party raw data that "1. greenwald2017_prepare_data.R" downloads
+# from OSF (osf.io/ydeza) and extracts again when missing
+/ydeza-osfstorage-archive/
+/Data/Greenwald 2017/archive/
