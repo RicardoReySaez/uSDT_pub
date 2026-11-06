@@ -28,7 +28,6 @@
 # SECTION 2: Load packages and user-defined functions
 # ─────────────────────────────────────────────────────────────────────────────
 
-# pak::pak("RicardoReySaez/uSDT@dev")
 library(uSDT)
 library(dplyr)
 

@@ -26,7 +26,6 @@
 # SECTION 2: Load packages
 # ─────────────────────────────────────────────────────────────────────────────
 
-# pak::pak("RicardoReySaez/uSDT@dev")
 library(uSDT)
 library(dplyr)
 library(tidyr)

@@ -22,12 +22,11 @@ If you want to apply the method to your own data, start there:
 - CRAN: <https://CRAN.R-project.org/package=uSDT>
 
 ```r
-install.packages("uSDT")                 # released version
-# pak::pak("RicardoReySaez/uSDT@dev")    # development version
+install.packages("uSDT")
 ```
 
-Some scripts in this repository were last run with the development
-version of `{uSDT}` (0.1.0.9000) and include the line to install it.
+The scripts in this repository need `{uSDT}` 0.2.0 or later, the version
+on CRAN.
 
 ## Repository structure
 

@@ -19,7 +19,7 @@
 # The approximation differed by at most .04 from 1,000 simulated studies
 # per design. Use method = "simulation" to rerun that slower check.
 # Run from the project root (uSDT_pub.Rproj).
-# Last run: R 4.5.0; uSDT 0.1.0.9000 (dev, commit 795096f).
+# Last run: R 4.5.0; uSDT 0.2.0.
 
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -30,8 +30,8 @@
 library(ggplot2)
 if (!requireNamespace("uSDT", quietly = TRUE) ||
     !"usdt_power" %in% getNamespaceExports("uSDT")) {
-  stop("This script needs a version of uSDT with usdt_power(): ",
-       "remotes::install_github(\"RicardoReySaez/uSDT\", ref = \"dev\").",
+  stop("This script needs uSDT 0.2.0 or later, which includes usdt_power(): ",
+       "install.packages(\"uSDT\").",
        call. = FALSE)
 }
 
