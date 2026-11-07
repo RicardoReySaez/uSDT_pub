@@ -414,14 +414,37 @@ return {
       if meta["author-note"] and meta["author-note"]["correspondence-note"] then
         corresponding_paragraph.content:extend(meta["author-note"]["correspondence-note"])
       else
+        -- LOCAL PATCH: support several corresponding authors.
+        -- With more than one, the note reads
+        -- "<Name1>, Email: <email1>, and <Name2>, Email: <email2>".
+        local corresponding_authors = {}
         if byauthor then
+          for _, a in ipairs(byauthor) do
+            if a.attributes and a.attributes.corresponding and
+                stringify(a.attributes.corresponding) == "true" then
+              table.insert(corresponding_authors, a)
+            end
+          end
+        end
+        if #corresponding_authors > 1 then
+          for k, a in ipairs(corresponding_authors) do
+            if k > 1 then
+              if k == #corresponding_authors then
+                corresponding_paragraph.content:extend({ pandoc.Str(","), pandoc.Space(), pandoc.Str("and"), pandoc.Space() })
+              else
+                corresponding_paragraph.content:extend({ pandoc.Str(","), pandoc.Space() })
+              end
+            end
+            corresponding_paragraph.content:extend(a.apaauthordisplay)
+            if a.email and not meta["suppress-corresponding-email"] then
+              corresponding_paragraph.content:extend({ pandoc.Str(", " .. emailword .. ":"), pandoc.Space(),
+                pandoc.Link(stringify(a.email), "mailto:" .. stringify(a.email)) })
+            end
+          end
+        elseif byauthor then
           for i, a in ipairs(byauthor) do
             if a.attributes then
               if a.attributes.corresponding and stringify(a.attributes.corresponding) == "true" then
-                if check_corresponding then
-                  error("There can only be one author marked as the corresponding author. " ..
-                  stringify(a.apaauthordisplay) .. " is the second author you have marked as the corresponding author.")
-                end
                 check_corresponding = true
                 corresponding_paragraph.content:extend(a.apaauthordisplay)
 

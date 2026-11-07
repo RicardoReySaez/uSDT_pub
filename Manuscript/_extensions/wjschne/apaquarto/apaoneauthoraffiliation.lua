@@ -48,5 +48,38 @@ Meta = function(meta)
     error(
     "At least one author needs to marked as the corresponding author. For example, \n\nauthor:\n  - name: Fred Jones\n    affiliations: Generic University\n    email: fred.jones@generic.edu\n    corresponding: true\n")
   end
+  -- LOCAL PATCH: several corresponding authors (used by title.tex).
+  -- Builds "<Name1>, Email: <email1>, and <Name2>, Email: <email2>".
+  local stringify = pandoc.utils.stringify
+  local corr = {}
+  for _, j in ipairs(meta["by-author"]) do
+    if j.attributes and j.attributes.corresponding and
+        stringify(j.attributes.corresponding) == "true" then
+      table.insert(corr, j)
+    end
+  end
+  if #corr > 1 then
+    local emailword = "Email"
+    if meta.language and meta.language.email then
+      emailword = stringify(meta.language.email)
+    end
+    local txt = pandoc.Inlines({})
+    for k, a in ipairs(corr) do
+      if k > 1 then
+        if k == #corr then
+          txt:extend({ pandoc.Str(","), pandoc.Space(), pandoc.Str("and"), pandoc.Space() })
+        else
+          txt:extend({ pandoc.Str(","), pandoc.Space() })
+        end
+      end
+      txt:extend(pandoc.Inlines(a.apaauthordisplay or a.name.literal))
+      if a.email and not meta["suppress-corresponding-email"] then
+        txt:extend({ pandoc.Str(", " .. emailword .. ":"), pandoc.Space(),
+          pandoc.Link(stringify(a.email), "mailto:" .. stringify(a.email)) })
+      end
+    end
+    meta.multicorresponding = true
+    meta.multicorrespondingtext = pandoc.MetaInlines(txt)
+  end
   return (meta)
 end

@@ -6,8 +6,8 @@ author:
     orcid: 0000-0001-6739-2035
     affiliation:
       - ref: 1
-    corresponding: false
-    email: ricardo.rey@uam.es
+    corresponding: true
+    email: ricardoreysaez95@gmail.com
   - name: Alicia Franco-Martínez
     orcid: 0000-0002-9710-1240
     affiliation:
@@ -1180,7 +1180,7 @@ $$ {#eq-s-exu}
 For aware participants, $X=2\cdot|Z|$ and $U=\Phi(|Z|)-.5$, where $Z$ is a standard normal variable. Since the density of $|Z|$ is $2\cdot\phi(z)$ for $z\geq0$, their expected product is
 $$
 \begin{aligned}
-\mathbb{E}(XU\mid\mathrm{aware})
+\mathbb{E}(X\cdot U\mid\mathrm{aware})
 &=4\int_0^\infty z\cdot[\Phi(z)-.5]\cdot\phi(z)\,dz\\
 &=4\int_0^\infty\phi(z)^2\,dz\\
 &=\frac{1}{\sqrt{\pi}},

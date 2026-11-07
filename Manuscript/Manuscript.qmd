@@ -7,8 +7,8 @@ author:
     orcid: 0000-0001-6739-2035
     affiliation:
       - ref: 1
-    corresponding: false
-    email: ricardo.rey@uam.es
+    corresponding: true
+    email: ricardoreysaez95@gmail.com
     role:
       - conceptualization: equal
       - data curation: lead
@@ -213,7 +213,7 @@ on establishing a dissociation between these two measures.
 
 [^direct]: Despite its popularity, we prefer to avoid the
     direct/indirect terminology, as it may be confusing for readers
-    unfamiliar with it. Although the terms “direct” and “indirect” refer
+    unfamiliar with it. Although the terms "direct" and "indirect" refer
     to measures of *processing*, they can be misleading. Using "direct
     measures of awareness" may wrongly suggest that awareness is
     measured directly, implying that the other also measures awareness,
@@ -853,6 +853,7 @@ $$
 \end{bmatrix}
 \right).
 $$ {#eq-05}
+
 Here, $\boldsymbol{d}'_i = (d'_{iA}, d'_{iI})^\top$ contains participant
 $i$'s sensitivities in the awareness ($A$) and influence ($I$) tasks,
 while $\boldsymbol{c}_i = (c_{iA}, c_{iI})^\top$ contains the
